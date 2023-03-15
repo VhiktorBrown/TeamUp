@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".modules.main.home.fragments.AdminHomeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/user_image"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:src="@drawable/bunkies_profile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp" />
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Richard Brandson"
+        app:layout_constraintStart_toEndOf="@+id/user_image"
+        app:layout_constraintTop_toTopOf="@+id/user_image"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/sf_pro_display_bold"
+        android:textSize="@dimen/_12ssp" />
+
+    <TextView
+        android:id="@+id/user_role"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Java Developer"
+        app:layout_constraintStart_toEndOf="@+id/user_image"
+        app:layout_constraintTop_toBottomOf="@+id/user_name"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:textColor="@color/textColor"
+        android:fontFamily="@font/sf_pro_display_bold"
+        android:textSize="@dimen/_12ssp" />
+
+    <ImageView
+        android:id="@+id/log_out"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:src="@drawable/ic_logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/user_image"
+        app:layout_constraintBottom_toBottomOf="@+id/user_image"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:contentDescription="@string/logout"
+        app:tint="@color/primary" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@+id/user_image"
+            android:layout_marginTop="@dimen/_10sdp">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_create_new_employee"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_32sdp"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:fontFamily="@font/sf_pro_display_regular"
+                style="@style/customChipStyle"
+                android:text="Create New Employee"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_create_new_task"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_32sdp"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:fontFamily="@font/sf_pro_display_regular"
+                style="@style/customChipStyle"
+                android:text="Create New Task"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_create_new_group"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_32sdp"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:fontFamily="@font/sf_pro_display_regular"
+                style="@style/customChipStyle"
+                android:text="Create New Group"/>
+
+        </com.google.android.material.chip.ChipGroup>
+
+        <TextView
+            android:id="@+id/total_employees"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15`"
+            app:layout_constraintStart_toStartOf="@+id/total_employees_text"
+            app:layout_constraintEnd_toEndOf="@+id/total_employees_text"
+            app:layout_constraintTop_toBottomOf="@+id/chip_group"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/sf_pro_display_bold"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/_18ssp" />
+
+        <TextView
+            android:id="@+id/total_employees_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Employees"
+            android:textColor="@color/primary"
+            android:textSize="@dimen/_10ssp"
+            android:textAllCaps="true"
+            android:fontFamily="@font/sf_pro_display_bold"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_40sdp"
+            app:layout_constraintTop_toBottomOf="@+id/total_employees"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/total_tasks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="45"
+            app:layout_constraintStart_toStartOf="@+id/total_tasks_text"
+            app:layout_constraintEnd_toEndOf="@+id/total_tasks_text"
+            app:layout_constraintTop_toBottomOf="@+id/chip_group"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/sf_pro_display_bold"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/_18ssp" />
+
+        <TextView
+            android:id="@+id/total_tasks_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Tasks"
+            android:textColor="@color/primary"
+            android:textSize="@dimen/_10ssp"
+            android:textAllCaps="true"
+            android:fontFamily="@font/sf_pro_display_bold"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            app:layout_constraintStart_toEndOf="@+id/total_employees_text"
+            app:layout_constraintTop_toBottomOf="@+id/total_tasks"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/all_tasks_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="All Tasks"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/total_employees_text"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:fontFamily="@font/sf_pro_display_semibold"
+            android:textSize="@dimen/_16ssp"
+            android:textColor="@color/textColor" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/all_tasks_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:listitem="@layout/admin_task_layout"
+            app:layout_constraintTop_toBottomOf="@+id/all_tasks_text"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

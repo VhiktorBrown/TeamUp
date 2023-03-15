@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#308CF7</color>
+    <color name="closeToPrimary">#B2D0F4</color>
+    <color name="secondary">#ffffff</color>
+    <color name="textColor">#424242</color>
+    <color name="textColorDark">#1E1E1E</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="completed">#5DBB63</color>
+    <color name="completed_1">#99ED63</color>
+    <color name="in_progress">#FFD1DC</color>
+    <color name="todo">#C5C6D0</color>
+
+</resources>

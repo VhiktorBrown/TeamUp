@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:foreground="?selectableItemBackgroundBorderless"
+    android:clickable="true"
+    android:layout_marginBottom="@dimen/_15sdp"
+    android:background="@android:color/transparent"
+    android:paddingStart="@dimen/_10sdp"
+    android:paddingEnd="@dimen/_20sdp"
+    android:focusable="true">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/inbox_image"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="?selectableItemBackgroundBorderless"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/academia_profile"
+        app:civ_border_width="@dimen/_1sdp"
+        app:civ_border_color="@color/primary"
+        android:tint="@color/textColor2"/>
+
+    <TextView
+        android:id="@+id/inbox_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Christopher Columbus"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_bold"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/inbox_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:textAlignment="gravity"
+        android:gravity="start"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:textSize="@dimen/_12ssp" />
+
+    <TextView
+        android:id="@+id/gender"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/inbox_name"
+        app:layout_constraintTop_toBottomOf="@+id/inbox_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Male"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/textColor2"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:textSize="@dimen/_12ssp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:paddingStart="@dimen/_2sdp"
+        android:paddingEnd="@dimen/_3sdp"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:layout_marginBottom="@dimen/_3sdp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
