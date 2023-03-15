@@ -36,4 +36,11 @@
     <style name="ThemeOverlay.MyApp.Chip.Choice" parent="">
         <item name="elevationOverlayEnabled">false</item>
     </style>
+
+    <style name="BodyTextStyle" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/sf_pro_display_semibold</item>
+        <item name="android:textSize">@dimen/_15ssp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>

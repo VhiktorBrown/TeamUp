@@ -9,6 +9,8 @@
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/drawable/completed_bg.xml" value="0.2" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/drawable/dot_onboard_unactive_view.xml" value="0.2" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/drawable/dot_onboard_view.xml" value="0.2" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/drawable/drop_down_item_bg.xml" value="0.2" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/drawable/edit_text_background.xml" value="0.2" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/drawable/ic_arrow_forward.xml" value="0.2" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/drawable/ic_done.xml" value="0.2" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/drawable/ic_send.xml" value="0.2" />
@@ -18,16 +20,19 @@
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/drawable/send_message_layout.xml" value="0.2" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/drawable/to_do_bg.xml" value="0.2" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/activity_chat.xml" value="0.12771739130434784" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/activity_create_new_task.xml" value="0.2" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/activity_group_chat.xml" value="0.12771739130434784" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/activity_login.xml" value="0.17" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/activity_main.xml" value="0.12771739130434784" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/activity_on_boarding.xml" value="0.2" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/activity_start_new_chat.xml" value="0.12771739130434784" />
-        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/activity_start_new_group.xml" value="0.12771739130434784" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/activity_start_new_group.xml" value="0.2" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/admin_task_layout.xml" value="0.21" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/chat_in_layout.xml" value="0.12771739130434784" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/chat_layout.xml" value="0.12771739130434784" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/chat_out_layout.xml" value="0.12771739130434784" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/drop_down_bottom_sheet_layout.xml" value="0.12771739130434784" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/drop_down_rv_item.xml" value="0.12771739130434784" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/fragment_admin_home.xml" value="0.21" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/fragment_chat.xml" value="0.10638297872340426" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/fragment_group_chat.xml" value="0.12771739130434784" />
