@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Skip"
-        android:fontFamily="@font/sf_pro_display_semibold"
+        android:fontFamily="@font/poppins_semi_bold"
         android:textColor="@color/primary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/finish_btn"

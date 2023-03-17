@@ -36,6 +36,10 @@ public class OnBoardingActivity extends AppCompatActivity {
 
         addDotsIndicator(0);
 
+        binding.skip.setOnClickListener(v -> {
+            startActivity(new Intent(OnBoardingActivity.this, LoginActivity.class));
+        });
+
         binding.finishBtn.setOnClickListener(v -> {
             current = currentPage + 1;
             binding.boardingViewPager.setCurrentItem(current);
@@ -80,11 +84,11 @@ public class OnBoardingActivity extends AppCompatActivity {
 
             currentPage = position;
             if(position == 0) {
-                binding.finishBtn.setVisibility(View.INVISIBLE);
+                binding.finishBtn.setVisibility(View.VISIBLE);
             } else if(position == mDots.length - 1) {
                 binding.finishBtn.setVisibility(View.VISIBLE);
             } else {
-                binding.finishBtn.setVisibility(View.INVISIBLE);
+                binding.finishBtn.setVisibility(View.VISIBLE);
             }
         }
 

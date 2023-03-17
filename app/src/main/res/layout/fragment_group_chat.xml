@@ -18,9 +18,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:fontFamily="@font/sf_pro_display_bold"
+            android:fontFamily="@font/poppins_bold"
             android:textColor="@color/textColor"
-            android:textSize="@dimen/_18ssp"
+            android:textSize="@dimen/_16ssp"
             android:layout_marginTop="@dimen/_10sdp" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -62,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="There are no groups yet. When admin creates a new group, you'll see them here."
-                android:fontFamily="@font/sf_pro_display_semibold"
+                android:fontFamily="@font/poppins_semi_bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/no_data_image"

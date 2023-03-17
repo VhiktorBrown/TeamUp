@@ -23,8 +23,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/image_cardView"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
                 app:cardBackgroundColor="@android:color/transparent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -54,9 +54,10 @@
                 app:layout_constraintStart_toEndOf="@+id/image_cardView"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginStart="@dimen/_10sdp"
+                android:textSize="@dimen/_10ssp"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:fontFamily="@font/sf_pro_display_semibold"
+                android:fontFamily="@font/poppins_semi_bold"
                 android:textColor="@color/textColor"
                 android:textAlignment="gravity"
                 android:gravity="start" />
@@ -72,10 +73,11 @@
                 android:layout_marginEnd="@dimen/_20sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 app:layout_constraintTop_toBottomOf="@+id/task_title"
-                android:fontFamily="@font/sf_pro_display_regular"
+                android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/textColor"
                 android:ellipsize="end"
                 android:maxLines="2"
+                android:textSize="@dimen/_10ssp"
                 android:textAlignment="gravity"
                 android:gravity="start" />
 
@@ -87,12 +89,12 @@
                 app:layout_constraintStart_toEndOf="@+id/image_cardView"
                 app:layout_constraintTop_toBottomOf="@+id/task_description"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:fontFamily="@font/sf_pro_display_regular"
-                android:textColor="@color/textColor"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/primary2"
                 android:textAlignment="gravity"
                 android:gravity="center_vertical"
-                android:drawablePadding="@dimen/_5sdp"
+                android:drawablePadding="@dimen/_2sdp"
                 android:textSize="@dimen/_10ssp"
                 app:drawableStartCompat="@drawable/ic_time" />
 
@@ -113,7 +115,7 @@
                 android:paddingTop="@dimen/_2sdp"
                 android:paddingBottom="@dimen/_2sdp"
                 android:textColor="@color/white"
-                android:fontFamily="@font/sf_pro_display_regular" />
+                android:fontFamily="@font/poppins_regular" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -50,7 +50,8 @@ public class StartNewChatActivity extends AppCompatActivity {
                         if(!task.getResult().isEmpty()){
                             employees.clear();
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                if(!document.toObject(UserDetails.class).getUid().equals(SharedPref.getInstance(getApplicationContext()).getString(Constants.UID))){
+                                UserDetails userDetails = document.toObject(UserDetails.class);
+                                if(!userDetails.getUid().equals(SharedPref.getInstance(getApplicationContext()).getString(Constants.UID))){
                                     employees.add(document.toObject(UserDetails.class));
                                     Log.d(TAG, document.getId() + " => " + document.getData());
                                 }

@@ -11,7 +11,10 @@ public class UserDetails {
     Timestamp dateOfBirth;
     Boolean admin;
     String role;
+    String phone;
+    String address;
     Timestamp dateJoined;
+    String token;
 
     public String getId() {
         return id;
@@ -53,6 +56,22 @@ public class UserDetails {
         this.password = password;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public Timestamp getDateOfBirth() {
         return dateOfBirth;
     }
@@ -83,5 +102,13 @@ public class UserDetails {
 
     public void setDateJoined(Timestamp dateJoined) {
         this.dateJoined = dateJoined;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

@@ -23,7 +23,7 @@
         android:src="@drawable/academia_profile"
         app:civ_border_width="@dimen/_1sdp"
         app:civ_border_color="@color/primary"
-        android:tint="@color/textColor2"/>
+        android:tint="@color/textColor"/>
 
     <TextView
         android:id="@+id/inbox_name"
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:text="Christopher Columbus"
         android:textColor="@color/black"
-        android:fontFamily="@font/poppins_bold"
+        android:fontFamily="@font/poppins_semi_bold"
         android:layout_marginTop="@dimen/_10sdp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@+id/inbox_image"
@@ -53,7 +53,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:text="Male"
         android:fontFamily="@font/poppins_regular"
-        android:textColor="@color/textColor2"
+        android:textColor="@color/textColor"
         android:layout_marginEnd="@dimen/_5sdp"
         android:textSize="@dimen/_12ssp"
         android:maxLines="2"

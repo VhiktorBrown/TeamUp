@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/secondary"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".modules.main.home.fragments.AdminHomeFragment">
 
@@ -14,7 +15,7 @@
         android:id="@+id/user_image"
         android:layout_width="@dimen/_35sdp"
         android:layout_height="@dimen/_35sdp"
-        android:src="@drawable/bunkies_profile"
+        android:src="@drawable/academia_profile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="@dimen/_10sdp"
@@ -29,7 +30,7 @@
         app:layout_constraintTop_toTopOf="@+id/user_image"
         android:layout_marginStart="@dimen/_5sdp"
         android:textColor="@color/black"
-        android:fontFamily="@font/sf_pro_display_bold"
+        android:fontFamily="@font/poppins_bold"
         android:textSize="@dimen/_12ssp" />
 
     <TextView
@@ -41,8 +42,8 @@
         app:layout_constraintTop_toBottomOf="@+id/user_name"
         android:layout_marginStart="@dimen/_5sdp"
         android:textColor="@color/textColor"
-        android:fontFamily="@font/sf_pro_display_bold"
-        android:textSize="@dimen/_12ssp" />
+        android:fontFamily="@font/poppins_bold"
+        android:textSize="@dimen/_10ssp" />
 
     <ImageView
         android:id="@+id/log_out"
@@ -60,12 +61,15 @@
             android:id="@+id/chip_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:singleSelection="true"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
             app:layout_constraintTop_toBottomOf="@+id/user_image"
-            android:layout_marginTop="@dimen/_10sdp">
+            android:layout_marginTop="@dimen/_15sdp">
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_create_new_employee"
@@ -73,7 +77,9 @@
                 android:layout_height="@dimen/_32sdp"
                 android:paddingStart="@dimen/_10sdp"
                 android:paddingEnd="@dimen/_10sdp"
-                android:fontFamily="@font/sf_pro_display_regular"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:fontFamily="@font/poppins_regular"
                 style="@style/customChipStyle"
                 android:text="Create New Employee"/>
 
@@ -83,7 +89,7 @@
                 android:layout_height="@dimen/_32sdp"
                 android:paddingStart="@dimen/_10sdp"
                 android:paddingEnd="@dimen/_10sdp"
-                android:fontFamily="@font/sf_pro_display_regular"
+                android:fontFamily="@font/poppins_regular"
                 style="@style/customChipStyle"
                 android:text="Create New Task"/>
 
@@ -93,50 +99,76 @@
                 android:layout_height="@dimen/_32sdp"
                 android:paddingStart="@dimen/_10sdp"
                 android:paddingEnd="@dimen/_10sdp"
-                android:fontFamily="@font/sf_pro_display_regular"
+                android:fontFamily="@font/poppins_regular"
                 style="@style/customChipStyle"
                 android:text="Create New Group"/>
 
         </com.google.android.material.chip.ChipGroup>
 
-        <TextView
-            android:id="@+id/total_employees"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="15`"
-            app:layout_constraintStart_toStartOf="@+id/total_employees_text"
-            app:layout_constraintEnd_toEndOf="@+id/total_employees_text"
-            app:layout_constraintTop_toBottomOf="@+id/chip_group"
+        <!--<androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/total_employees_layout"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_80sdp"
             android:layout_marginTop="@dimen/_10sdp"
-            android:fontFamily="@font/sf_pro_display_bold"
-            android:textColor="@color/textColor"
-            android:textSize="@dimen/_18ssp" />
+            android:background="@drawable/primary_button"
+            app:layout_constraintEnd_toStartOf="@+id/total_tasks_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chip_group">
 
-        <TextView
-            android:id="@+id/total_employees_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Total Employees"
-            android:textColor="@color/primary"
-            android:textSize="@dimen/_10ssp"
-            android:textAllCaps="true"
-            android:fontFamily="@font/sf_pro_display_bold"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginStart="@dimen/_40sdp"
-            app:layout_constraintTop_toBottomOf="@+id/total_employees"
-            app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/total_employees"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18ssp" />
+
+            <TextView
+                android:id="@+id/total_employees_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Total Employees"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_10ssp"
+                android:textAllCaps="true"
+                android:textAlignment="gravity"
+                android:gravity="center_horizontal"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:layout_marginEnd="@dimen/_3sdp"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_marginTop="@dimen/_5sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/total_employees"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/total_tasks_layout"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_80sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/primary_button"
+        app:layout_constraintStart_toEndOf="@+id/total_employees_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chip_group">
 
         <TextView
             android:id="@+id/total_tasks"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="45"
-            app:layout_constraintStart_toStartOf="@+id/total_tasks_text"
-            app:layout_constraintEnd_toEndOf="@+id/total_tasks_text"
-            app:layout_constraintTop_toBottomOf="@+id/chip_group"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="@dimen/_10sdp"
-            android:fontFamily="@font/sf_pro_display_bold"
-            android:textColor="@color/textColor"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/white"
             android:textSize="@dimen/_18ssp" />
 
         <TextView
@@ -144,26 +176,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Total Tasks"
-            android:textColor="@color/primary"
+            android:textColor="@color/white"
             android:textSize="@dimen/_10ssp"
             android:textAllCaps="true"
-            android:fontFamily="@font/sf_pro_display_bold"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_20sdp"
-            app:layout_constraintStart_toEndOf="@+id/total_employees_text"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginEnd="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textAlignment="gravity"
+            android:gravity="center_horizontal"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/total_tasks"
             app:layout_constraintEnd_toEndOf="parent" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+-->
         <TextView
             android:id="@+id/all_tasks_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="All Tasks"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/total_employees_text"
+            app:layout_constraintTop_toBottomOf="@+id/chip_group"
             android:layout_marginTop="@dimen/_20sdp"
             android:layout_marginStart="@dimen/_10sdp"
-            android:fontFamily="@font/sf_pro_display_semibold"
+            android:fontFamily="@font/poppins_semi_bold"
             android:textSize="@dimen/_16ssp"
             android:textColor="@color/textColor" />
 
@@ -176,6 +213,45 @@
             tools:listitem="@layout/admin_task_layout"
             app:layout_constraintTop_toBottomOf="@+id/all_tasks_text"
             app:layout_constraintBottom_toBottomOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/no_data_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/all_tasks_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/_10sdp">
+
+            <ImageView
+                android:id="@+id/no_data_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_100sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/team_up_no_data"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_20sdp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="There are currently no tasks. When there are tasks, you'll see them here."
+                android:fontFamily="@font/poppins_semi_bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/no_data_image"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@color/textColor"
+                android:textAlignment="gravity"
+                android:gravity="center" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

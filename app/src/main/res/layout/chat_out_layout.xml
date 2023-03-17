@@ -26,7 +26,7 @@
             android:paddingTop="@dimen/_10sdp"
             android:paddingBottom="@dimen/_10sdp"
             android:lineSpacingExtra="@dimen/_5sdp"
-            android:fontFamily="@font/sf_pro_display_regular"
+            android:fontFamily="@font/poppins_regular"
             android:textColor="@color/white" />
 
         <TextView
@@ -37,10 +37,11 @@
             app:layout_constraintTop_toBottomOf="@+id/inbox_out_message"
             android:text="23 Mar 2022, 08:41"
             android:textSize="@dimen/_10ssp"
-            android:fontFamily="@font/sf_pro_display_regular"
+            android:fontFamily="@font/poppins_regular"
             android:textColor="@color/textColor"
             android:layout_marginEnd="@dimen/_5sdp"
             android:drawablePadding="@dimen/_5sdp"
+            app:drawableTint="@color/primary"
             app:drawableEndCompat="@drawable/ic_done" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,13 +8,14 @@
 
     <ImageView
         android:id="@+id/app_icon"
-        android:layout_width="@dimen/_100sdp"
-        android:layout_height="@dimen/_100sdp"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp"
         android:src="@drawable/team_up_app_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/_20sdp" />
+        android:layout_marginTop="@dimen/_20sdp"
+        app:tint="@color/primary" />
 
     <TextView
         android:id="@+id/app_name"
@@ -25,9 +26,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/app_icon"
         android:layout_marginTop="@dimen/_10sdp"
-        android:fontFamily="@font/sf_pro_display_bold"
-        android:textSize="@dimen/_20ssp"
-        android:textColor="@color/textColor" />
+        android:fontFamily="@font/poppins_bold"
+        android:textSize="@dimen/_18ssp"
+        android:textColor="@color/primary" />
 
     <TextView
         android:id="@+id/login_text"
@@ -41,8 +42,8 @@
         android:gravity="start"
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginTop="@dimen/_10sdp"
-        android:fontFamily="@font/sf_pro_display_bold"
-        android:textSize="@dimen/_20ssp"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:textSize="@dimen/_14ssp"
         android:textColor="@color/textColor" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -68,7 +69,7 @@
             android:layout_height="wrap_content"
             android:textColorHint="@color/textColor"
             android:textColor="@color/textColor"
-            android:fontFamily="@font/sf_pro_display_regular"
+            android:fontFamily="@font/poppins_regular"
             android:inputType="textEmailAddress"
             android:hint="Work Email" />
 
@@ -99,7 +100,7 @@
             android:layout_height="wrap_content"
             android:textColorHint="@color/textColor"
             android:textColor="@color/textColor"
-            android:fontFamily="@font/sf_pro_display_regular"
+            android:fontFamily="@font/poppins_regular"
             android:inputType="textEmailAddress"
             android:hint="Password" />
 
@@ -116,7 +117,7 @@
         android:layout_marginStart="@dimen/_30sdp"
         android:layout_marginEnd="@dimen/_30sdp"
         android:background="@drawable/primary_button"
-        android:fontFamily="@font/sf_pro_display_bold"
+        android:fontFamily="@font/poppins_bold"
         android:layout_marginTop="@dimen/_20sdp"
         android:text="Log in"
         android:textColor="@color/white"

@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawablePadding="20dp"
-        android:fontFamily="@font/sf_pro_display_semibold"
+        android:fontFamily="@font/poppins_semi_bold"
         android:padding="10dp"
         android:text="Employees"
         android:textColor="@color/black"

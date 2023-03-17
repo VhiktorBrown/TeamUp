@@ -63,29 +63,6 @@ public class ChatActivity extends AppCompatActivity {
 
         binding.goBack.setOnClickListener(v -> onBackPressed());
 
-//        database.collection("chats")
-//                .document(senderId)
-//                .collection("messages")
-//                .orderBy("date", Query.Direction.ASCENDING)
-//                .get()
-//                .addOnCompleteListener(task -> {
-//                    if (task.isSuccessful()) {
-//                        if(!task.getResult().isEmpty()){
-//                            chatArrayList.clear();
-//                            for (QueryDocumentSnapshot document : task.getResult()) {
-//                                chatArrayList.add(document.toObject(Chat.class));
-//                                Log.d(TAG, document.getId() + " => " + document.getData());
-//                            }
-//                            adapter.setList(chatArrayList);
-//                            if(chatArrayList.size() > 1){
-//                                binding.inboxRecyclerView.smoothScrollToPosition(chatArrayList.size()-1);
-//                            }
-//                        }
-//                    } else {
-//                        Log.d(TAG, "Error getting documents: ", task.getException());
-//                    }
-//                });
-
         database.collection("chats").document(senderId).collection("messages")
                 .orderBy("date", Query.Direction.ASCENDING)
                 .addSnapshotListener((value, error) -> {
@@ -253,7 +230,7 @@ public class ChatActivity extends AppCompatActivity {
                                                         updateLastMessageAndDateForReceiver(currentChat, chat);
 
                                                         //send Push Notifications
-                                                        fetchStudentToken(receiverUid);
+                                                        //fetchStudentToken(receiverUid);
                                                     }
                                                 }
                                             }
@@ -268,7 +245,7 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void fetchStudentToken(String uid){
-        database.collection("students")
+        database.collection(Constants.EMPLOYEES)
                 .whereEqualTo("uid", uid)
                 .get()
                 .addOnCompleteListener(task -> {

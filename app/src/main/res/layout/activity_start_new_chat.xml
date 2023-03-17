@@ -39,7 +39,7 @@
         app:layout_constraintTop_toTopOf="@+id/new_chat_image"
         app:layout_constraintBottom_toBottomOf="@+id/new_chat_image"
         android:layout_marginStart="@dimen/_10sdp"
-        android:fontFamily="@font/sf_pro_display_bold"
+        android:fontFamily="@font/poppins_bold"
         android:textSize="@dimen/_14ssp" />
 
     <View

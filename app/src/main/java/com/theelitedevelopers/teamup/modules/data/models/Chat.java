@@ -5,13 +5,17 @@ import com.google.firebase.Timestamp;
 public class Chat {
     String id;
     String uid;
+    String title;
     String message;
+    String description;
     String image;
     String name;
     Timestamp date;
     String lastMessage;
     String owner;
     String gender;
+    String messagedLast;
+    Timestamp dateLastMessageSent;
 
     public Chat(){}
 
@@ -32,6 +36,14 @@ public class Chat {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getUid() {
@@ -96,5 +108,29 @@ public class Chat {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getMessagedLast() {
+        return messagedLast;
+    }
+
+    public void setMessagedLast(String messagedLast) {
+        this.messagedLast = messagedLast;
+    }
+
+    public Timestamp getDateLastMessageSent() {
+        return dateLastMessageSent;
+    }
+
+    public void setDateLastMessageSent(Timestamp dateLastMessageSent) {
+        this.dateLastMessageSent = dateLastMessageSent;
     }
 }

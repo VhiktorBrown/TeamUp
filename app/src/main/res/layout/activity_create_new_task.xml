@@ -7,7 +7,6 @@
     android:background="@color/secondary"
     tools:context=".modules.main.task.CreateNewTaskActivity">
 
-
     <ImageView
         android:id="@+id/go_back"
         android:layout_width="wrap_content"
@@ -27,7 +26,7 @@
         app:layout_constraintStart_toEndOf="@id/go_back"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="@dimen/_10sdp"
-        android:src="@drawable/group"
+        android:src="@drawable/task"
         android:tint="@color/primary"/>
 
     <TextView
@@ -40,7 +39,7 @@
         app:layout_constraintTop_toTopOf="@+id/new_chat_image"
         app:layout_constraintBottom_toBottomOf="@+id/new_chat_image"
         android:layout_marginStart="@dimen/_10sdp"
-        android:fontFamily="@font/sf_pro_display_bold"
+        android:fontFamily="@font/poppins_bold"
         android:textSize="@dimen/_14ssp" />
 
     <View
@@ -76,7 +75,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="@dimen/_20sdp"
                 app:layout_constraintTop_toTopOf="parent"
-                android:fontFamily="@font/sf_pro_display_regular"
+                android:fontFamily="@font/poppins_semi_bold"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:textSize="@dimen/_12ssp" />
 
@@ -92,7 +91,7 @@
                 android:textSize="@dimen/_12ssp"
                 android:textColor="@color/textColor"
                 android:textColorHint="@color/textColor"
-                android:fontFamily="@font/sf_pro_display_regular"
+                android:fontFamily="@font/poppins_regular"
                 android:background="@drawable/edit_text_background"
                 android:padding="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_3sdp" />
@@ -106,7 +105,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="@dimen/_20sdp"
                 app:layout_constraintTop_toBottomOf="@+id/task_title"
-                android:fontFamily="@font/sf_pro_display_regular"
+                android:fontFamily="@font/poppins_semi_bold"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:textSize="@dimen/_12ssp" />
 
@@ -124,7 +123,7 @@
                 android:gravity="start"
                 android:textColor="@color/textColor"
                 android:textColorHint="@color/textColor"
-                android:fontFamily="@font/sf_pro_display_regular"
+                android:fontFamily="@font/poppins_regular"
                 android:background="@drawable/edit_text_background"
                 android:padding="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_3sdp" />
@@ -141,7 +140,7 @@
                 android:textSize="@dimen/_12ssp"
                 android:textColor="@color/textColor"
                 android:textColorHint="@color/textColor"
-                android:fontFamily="@font/sf_pro_display_regular"
+                android:fontFamily="@font/poppins_regular"
                 android:background="@drawable/edit_text_background"
                 android:padding="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_15sdp" />
@@ -155,7 +154,6 @@
                 app:layout_constraintEnd_toEndOf="@+id/task_description"
                 app:layout_constraintTop_toTopOf="@+id/select_date"
                 app:layout_constraintBottom_toBottomOf="@+id/select_date"
-                android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:textSize="@dimen/_12ssp"
                 android:paddingTop="@dimen/_7sdp"
@@ -164,7 +162,7 @@
                 android:paddingEnd="@dimen/_7sdp"
                 android:background="@drawable/to_do_bg"
                 android:textColor="@color/white"
-                android:fontFamily="@font/sf_pro_display_regular" />
+                android:fontFamily="@font/poppins_regular" />
 
             <TextView
                 android:id="@+id/task_assigned_to_text"
@@ -175,11 +173,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="@dimen/_20sdp"
                 app:layout_constraintTop_toBottomOf="@+id/select_date"
-                android:fontFamily="@font/sf_pro_display_regular"
+                android:fontFamily="@font/poppins_semi_bold"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:textSize="@dimen/_12ssp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/task_assigned_to"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -191,13 +189,13 @@
                 android:textSize="@dimen/_12ssp"
                 android:textColor="@color/textColor"
                 android:textColorHint="@color/textColor"
-                android:fontFamily="@font/sf_pro_display_regular"
+                android:fontFamily="@font/poppins_regular"
                 android:background="@drawable/edit_text_background"
                 android:padding="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_3sdp" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/create_new_group_button"
+                android:id="@+id/create_new_task_button"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_45sdp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -208,12 +206,23 @@
                 android:layout_marginStart="@dimen/_30sdp"
                 android:layout_marginEnd="@dimen/_30sdp"
                 android:background="@drawable/primary_button"
-                android:fontFamily="@font/sf_pro_display_bold"
+                android:fontFamily="@font/poppins_bold"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:text="Create New Task"
                 android:textColor="@color/white"
                 android:textAllCaps="false"
                 android:textSize="@dimen/_14ssp" />
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/create_new_task_button"
+                android:indeterminateTint="@color/primary"
+                android:indeterminate="true" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

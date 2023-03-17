@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.theelitedevelopers.teamup" >
+    package="com.theelitedevelopers.teamup">
 
     <application
         android:allowBackup="true"
@@ -8,7 +8,16 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.TeamUp" >
+        android:theme="@style/Theme.TeamUp">
+        <activity
+            android:name=".modules.splashscreen.SplashScreen"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".modules.main.task.EditTaskActivity"
             android:exported="true" />
@@ -37,14 +46,8 @@
             android:name=".modules.onboarding.OnBoardingActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:name=".modules.main.home.MainActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>

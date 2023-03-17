@@ -40,7 +40,7 @@
             android:paddingTop="@dimen/_10sdp"
             android:paddingBottom="@dimen/_10sdp"
             android:lineSpacingExtra="@dimen/_5sdp"
-            android:fontFamily="@font/sf_pro_display_regular"
+            android:fontFamily="@font/poppins_regular"
             android:textColor="@color/primary" />
 
         <TextView
@@ -52,7 +52,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:text="23 Mar 2022, 08:41"
             android:textSize="@dimen/_10ssp"
-            android:fontFamily="@font/sf_pro_display_regular"
+            android:fontFamily="@font/poppins_regular"
             android:textColor="@color/textColor"
             android:layout_marginStart="@dimen/_5sdp"
             android:layout_marginEnd="@dimen/_10sdp" />

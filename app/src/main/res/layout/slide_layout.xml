@@ -30,7 +30,7 @@
         android:textAlignment="gravity"
         android:gravity="center"
         android:textColor="@color/textColor"
-        android:fontFamily="@font/sf_pro_display_heavy"
+        android:fontFamily="@font/poppins_semi_bold"
         android:textSize="@dimen/_16ssp"
         app:layout_constraintTop_toBottomOf="@+id/image" />
 
@@ -39,7 +39,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Get assigned tasks, complete them and turn them in."
-        android:fontFamily="@font/sf_pro_display_semibold"
+        android:fontFamily="@font/poppins_regular"
         android:textColor="@color/textColor"
         app:layout_constraintTop_toBottomOf="@+id/title"
         app:layout_constraintStart_toStartOf="parent"

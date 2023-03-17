@@ -3,7 +3,9 @@ package com.theelitedevelopers.teamup.core.utils
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.View
+import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.Timestamp
 import com.theelitedevelopers.teamup.R
 import com.theelitedevelopers.teamup.core.data.local.SharedPref
 import com.theelitedevelopers.teamup.modules.data.models.UserDetails
@@ -21,6 +23,10 @@ class AppUtils {
         private const val DAY_MILLIS = 24 * HOUR_MILLIS
         private const val WEEK_MILLIS = 7 * DAY_MILLIS
 
+        fun showToastMessage(context: Context, message: String) {
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+        }
+
         @SuppressLint("ResourceAsColor")
         fun showSnackBar(view: View?, message: String?) {
             if (view != null) {
@@ -31,15 +37,73 @@ class AppUtils {
             }
         }
 
+        fun getTimeInDaysOrWeeks(date: String): String? {
+            var date1: Date? = null
+            var timeInMillis: Long = 0
+            val format = SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss")
+            try {
+                date1 = format.parse(date)
+                timeInMillis = date1.time
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+            return getTimeAgo(timeInMillis)
+        }
+
+        fun getTimeAgo(time: Long): String {
+            var time = time
+            if (time < 1000000000000L) {
+                // if timestamp given in seconds, convert to millis
+                time *= 1000
+            }
+            val now = System.currentTimeMillis()
+            if (now > time || time <= 0) {
+                return "Time's up"
+            }
+
+            // TODO: localize
+            val diff = time - now
+            return when {
+                diff < MINUTE_MILLIS -> {
+                    "Time's up"
+                }
+                diff < 2 * MINUTE_MILLIS -> {
+                    "1 min left"
+                }
+                diff < 50 * MINUTE_MILLIS -> {
+                    (diff / MINUTE_MILLIS).toString() + " minutes left"
+                }
+                diff < 110 * MINUTE_MILLIS -> {
+                    "1 hour left"
+                }
+                diff < 24 * HOUR_MILLIS -> {
+                    (diff / HOUR_MILLIS).toString() + " hours left"
+                }
+                diff < 48 * HOUR_MILLIS -> {
+                    "1 day left"
+                }
+                diff < 7 * DAY_MILLIS -> {
+                    (diff / DAY_MILLIS).toString() + " days left"
+                }
+                diff < 2 * WEEK_MILLIS -> {
+                    "A week left"
+                }
+                else -> {
+                    (diff / WEEK_MILLIS).toString() + " weeks left"
+                }
+            }
+        }
+
+
         fun convertDateFromOneFormatToAnother(
             sourceFormat: String?,
             destinationFormat: String?,
             date: String
-        ): String? {
+        ): String {
             @SuppressLint("SimpleDateFormat") val sourceDateFormat = SimpleDateFormat(sourceFormat)
             @SuppressLint("SimpleDateFormat") val destinationDateFormat =
                 SimpleDateFormat(destinationFormat)
-            var newDate: String? = ""
+            var newDate: String = ""
             try {
                 val sourceDate = sourceDateFormat.parse(date)
                 newDate = destinationDateFormat.format(Objects.requireNonNull(sourceDate))
@@ -49,6 +113,20 @@ class AppUtils {
             return newDate
         }
 
+        @Throws(ParseException::class)
+        fun getTimeStamp(): Timestamp {
+            val sourceFormat = "EEE MMM d HH:mm:ss z yyyy"
+            val destinationFormat = "EEE, d MMM yyyy HH:mm:ss"
+            val date = convertToDateFormat(
+                destinationFormat,
+                Objects.requireNonNull(
+                    convertDateFromOneFormatToAnother(
+                        sourceFormat, destinationFormat, Date().toString()
+                    )
+                )
+            )!!
+            return Timestamp(date)
+        }
 
         fun getInboxDate(date: String): String? {
             @SuppressLint("SimpleDateFormat") val format = SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss")
@@ -229,27 +307,41 @@ class AppUtils {
 
 
         @Throws(ParseException::class)
-        fun convertToDateFormat(formatType: String?, dateInString: String): Date? {
+        fun convertToDateFormat(formatType: String?, dateInString: String): Date {
             @SuppressLint("SimpleDateFormat") val format = SimpleDateFormat(formatType)
-            return format.parse(dateInString)
+            return format.parse(dateInString)!!
         }
 
         fun saveDataToSharedPref(context: Context, userDetails: UserDetails) {
+            SharedPref.getInstance(context).saveString(Constants.ID, userDetails.id)
             SharedPref.getInstance(context).saveString(Constants.UID, userDetails.uid)
             SharedPref.getInstance(context).saveString(Constants.NAME, userDetails.name)
             SharedPref.getInstance(context).saveString(Constants.EMAIL, userDetails.email)
+            SharedPref.getInstance(context).saveBoolean(Constants.ADMIN, userDetails.admin)
+            SharedPref.getInstance(context).saveString(Constants.ROLE, userDetails.role)
+            SharedPref.getInstance(context).saveString(Constants.PHONE, userDetails.phone)
+            SharedPref.getInstance(context).saveString(Constants.ADDRESS, userDetails.address)
         }
 
         fun removeDataToSharedPref(context : Context) {
+            SharedPref.getInstance(context).removeKeyValue(Constants.ID)
             SharedPref.getInstance(context).removeKeyValue(Constants.UID)
             SharedPref.getInstance(context).removeKeyValue(Constants.NAME)
             SharedPref.getInstance(context).removeKeyValue(Constants.EMAIL)
+            SharedPref.getInstance(context).removeKeyValue(Constants.ADMIN)
+            SharedPref.getInstance(context).removeKeyValue(Constants.ROLE)
+            SharedPref.getInstance(context).removeKeyValue(Constants.PHONE)
+            SharedPref.getInstance(context).removeKeyValue(Constants.ADDRESS)
         }
 
 
         @SuppressLint("SimpleDateFormat")
         fun getTimeFormat(): SimpleDateFormat {
             return SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss")
+        }
+
+        fun getServerDateFormat() : String {
+            return "EEE, d MMM yyyy HH:mm:ss";
         }
 
         @SuppressLint("SimpleDateFormat")
