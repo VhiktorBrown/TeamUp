@@ -11,6 +11,7 @@
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/drawable/dot_onboard_view.xml" value="0.2" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/drawable/drop_down_item_bg.xml" value="0.2" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/drawable/edit_text_background.xml" value="0.2" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/drawable/employee_details_background.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/drawable/ic_arrow_forward.xml" value="0.2" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/drawable/ic_done.xml" value="0.2" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/drawable/ic_edit.xml" value="0.12395833333333334" />
@@ -43,7 +44,7 @@
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/fragment_chat.xml" value="0.10638297872340426" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/fragment_group_chat.xml" value="0.12771739130434784" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/fragment_home.xml" value="0.22" />
-        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/fragment_profile.xml" value="0.1213768115942029" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/fragment_profile.xml" value="0.15" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/group_chat_in_layout.xml" value="0.2" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/group_chat_layout.xml" value="0.10638297872340426" />
         <entry key="..\:/Users/VICTOR/AndroidStudioProjects/TeamUp/app/src/main/res/layout/group_chat_out_layout.xml" value="0.10638297872340426" />

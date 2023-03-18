@@ -3,12 +3,237 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".modules.main.profile.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Employee Profile"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:textColor="@color/textColor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:textSize="@dimen/_16ssp"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:src="@drawable/academia_profile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            android:layout_marginTop="@dimen/_20sdp"/>
+
+        <TextView
+            android:id="@+id/profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chukwunomso Emmanuel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_image"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textColor="@color/textColor"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:textSize="@dimen/_14ssp" />
+
+        <TextView
+            android:id="@+id/role"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Android Engineer"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:textColor="@color/textColor"
+            app:layout_constraintTop_toBottomOf="@+id/profile_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/employee_details_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/role"
+            android:background="@drawable/employee_details_background"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="Employee details"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="@dimen/_14ssp"
+            android:textAlignment="gravity"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/company_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Company"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/employee_details_text"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:textColor="@color/textColor"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:drawablePadding="@dimen/_10sdp"
+            android:textSize="@dimen/_14ssp"
+            app:drawableStartCompat="@drawable/ic_home"
+            app:drawableTint="@color/textColor" />
+
+        <TextView
+            android:id="@+id/company_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Software Solutions Inc."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/company_name_text"
+            app:layout_constraintBottom_toBottomOf="@+id/company_name_text"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:textColor="@color/textColor"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:textSize="@dimen/_14ssp" />
+
+        <TextView
+            android:id="@+id/email_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Work Email"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/company_name_text"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:textColor="@color/textColor"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:drawablePadding="@dimen/_10sdp"
+            android:textSize="@dimen/_14ssp"
+            app:drawableStartCompat="@drawable/ic_email"
+            app:drawableTint="@color/textColor" />
+0
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="victor@softwaresolutions.com"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            app:layout_constraintStart_toEndOf="@+id/email_text"
+            app:layout_constraintTop_toTopOf="@+id/email_text"
+            app:layout_constraintBottom_toBottomOf="@+id/email_text"
+            android:textColor="@color/textColor"
+            android:textAlignment="gravity"
+            android:gravity="end"
+            android:maxLines="2"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:textSize="@dimen/_14ssp" />
+
+        <TextView
+            android:id="@+id/date_of_birth_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date Of Birth"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email_text"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:textColor="@color/textColor"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:drawablePadding="@dimen/_10sdp"
+            android:textSize="@dimen/_14ssp"
+            app:drawableStartCompat="@drawable/ic_date"
+            app:drawableTint="@color/textColor" />
+
+        <TextView
+            android:id="@+id/date_of_birth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="31-08-1998"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/date_of_birth_text"
+            app:layout_constraintBottom_toBottomOf="@+id/date_of_birth_text"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:textColor="@color/textColor"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:textSize="@dimen/_14ssp" />
+
+        <TextView
+            android:id="@+id/phone_number_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/date_of_birth_text"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:textColor="@color/textColor"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:drawablePadding="@dimen/_10sdp"
+            android:textSize="@dimen/_14ssp"
+            app:drawableStartCompat="@drawable/ic_phone"
+            app:drawableTint="@color/textColor" />
+
+        <TextView
+            android:id="@+id/phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="08145789765"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/phone_number_text"
+            app:layout_constraintBottom_toBottomOf="@+id/phone_number_text"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:textColor="@color/textColor"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:textSize="@dimen/_14ssp" />
+
+        <TextView
+            android:id="@+id/address_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/hostel"
+            app:layout_constraintTop_toBottomOf="@+id/phone_number_text"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:textColor="@color/textColor"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:drawablePadding="@dimen/_10sdp"
+            android:textSize="@dimen/_14ssp"
+            app:drawableStartCompat="@drawable/ic_home"
+            app:drawableTint="@color/textColor" />
+
+        <TextView
+            android:id="@+id/hostel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Saint Theresa Housing Estate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/address_text"
+            app:layout_constraintTop_toTopOf="@+id/address_text"
+            app:layout_constraintBottom_toBottomOf="@+id/address_text"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:textColor="@color/textColor"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:textAlignment="gravity"
+            android:gravity="end"
+            android:textSize="@dimen/_14ssp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
