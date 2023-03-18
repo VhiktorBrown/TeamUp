@@ -11,6 +11,7 @@ public class Constants {
     public static final String GROUP_CHAT_ID = "group_chat_id";
     public static final String GROUP_CHAT_NAME = "group_chat_name";
     public static final String GROUP_CHATS = "groupChats";
+    public static final String SUBSCRIBED = "subscribed";
     public static String NAME = "name";
     public static String EMAIL = "email";
     public static String DATE_OF_BIRTH = "date_of_birth";

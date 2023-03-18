@@ -101,4 +101,9 @@ public class AdminHomeFragment extends Fragment {
                 });
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        fetchAllTasks();
+    }
 }

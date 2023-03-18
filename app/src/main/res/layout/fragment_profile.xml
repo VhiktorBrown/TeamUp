@@ -71,7 +71,7 @@
             android:text="Employee details"
             android:textColor="@color/white"
             android:fontFamily="@font/poppins_regular"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="@dimen/_12ssp"
             android:textAlignment="gravity"
             android:gravity="center" />
 
@@ -87,7 +87,7 @@
             android:textColor="@color/textColor"
             android:fontFamily="@font/poppins_semi_bold"
             android:drawablePadding="@dimen/_10sdp"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="@dimen/_12ssp"
             app:drawableStartCompat="@drawable/ic_home"
             app:drawableTint="@color/textColor" />
 
@@ -103,7 +103,7 @@
             android:layout_marginEnd="@dimen/_10sdp"
             android:textColor="@color/textColor"
             android:fontFamily="@font/poppins_semi_bold"
-            android:textSize="@dimen/_14ssp" />
+            android:textSize="@dimen/_12ssp" />
 
         <TextView
             android:id="@+id/email_text"
@@ -117,7 +117,7 @@
             android:textColor="@color/textColor"
             android:fontFamily="@font/poppins_semi_bold"
             android:drawablePadding="@dimen/_10sdp"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="@dimen/_12ssp"
             app:drawableStartCompat="@drawable/ic_email"
             app:drawableTint="@color/textColor" />
 0
@@ -137,7 +137,7 @@
             android:gravity="end"
             android:maxLines="2"
             android:fontFamily="@font/poppins_semi_bold"
-            android:textSize="@dimen/_14ssp" />
+            android:textSize="@dimen/_12ssp" />
 
         <TextView
             android:id="@+id/date_of_birth_text"
@@ -151,7 +151,7 @@
             android:textColor="@color/textColor"
             android:fontFamily="@font/poppins_semi_bold"
             android:drawablePadding="@dimen/_10sdp"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="@dimen/_12ssp"
             app:drawableStartCompat="@drawable/ic_date"
             app:drawableTint="@color/textColor" />
 
@@ -167,7 +167,7 @@
             android:layout_marginEnd="@dimen/_10sdp"
             android:textColor="@color/textColor"
             android:fontFamily="@font/poppins_semi_bold"
-            android:textSize="@dimen/_14ssp" />
+            android:textSize="@dimen/_12ssp" />
 
         <TextView
             android:id="@+id/phone_number_text"
@@ -181,7 +181,7 @@
             android:textColor="@color/textColor"
             android:fontFamily="@font/poppins_semi_bold"
             android:drawablePadding="@dimen/_10sdp"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="@dimen/_12ssp"
             app:drawableStartCompat="@drawable/ic_phone"
             app:drawableTint="@color/textColor" />
 
@@ -197,7 +197,7 @@
             android:layout_marginEnd="@dimen/_10sdp"
             android:textColor="@color/textColor"
             android:fontFamily="@font/poppins_semi_bold"
-            android:textSize="@dimen/_14ssp" />
+            android:textSize="@dimen/_12ssp" />
 
         <TextView
             android:id="@+id/address_text"
@@ -205,7 +205,7 @@
             android:layout_height="wrap_content"
             android:text="Address"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/hostel"
+            app:layout_constraintEnd_toStartOf="@+id/address"
             app:layout_constraintTop_toBottomOf="@+id/phone_number_text"
             android:layout_marginTop="@dimen/_15sdp"
             android:layout_marginStart="@dimen/_20sdp"
@@ -213,12 +213,12 @@
             android:textColor="@color/textColor"
             android:fontFamily="@font/poppins_semi_bold"
             android:drawablePadding="@dimen/_10sdp"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="@dimen/_12ssp"
             app:drawableStartCompat="@drawable/ic_home"
             app:drawableTint="@color/textColor" />
 
         <TextView
-            android:id="@+id/hostel"
+            android:id="@+id/address"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Saint Theresa Housing Estate"
@@ -232,7 +232,7 @@
             android:fontFamily="@font/poppins_semi_bold"
             android:textAlignment="gravity"
             android:gravity="end"
-            android:textSize="@dimen/_14ssp" />
+            android:textSize="@dimen/_12ssp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

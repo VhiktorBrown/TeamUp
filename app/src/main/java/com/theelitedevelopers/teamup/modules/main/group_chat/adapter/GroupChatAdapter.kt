@@ -110,10 +110,10 @@ class GroupChatAdapter(var context : Context, var messageList : ArrayList<Chat>)
             )
 
 
-            /* Here, we want to check the next date
+/*            *//* Here, we want to check the next date
              * after this position. If it is the same
              * with this, we'll make this date GONE
-             */if (position >= 0) {
+             *//*if (position >= 0) {
                 //initialize next position
                 val nextPosition = position + 1
                 if (nextPosition < messageList.size) {
@@ -136,9 +136,7 @@ class GroupChatAdapter(var context : Context, var messageList : ArrayList<Chat>)
                                 ) == true
                             ) {
                                 holder.binding.inboxInDate.visibility = View.GONE
-                                holder.binding.inboxName.visibility = View.GONE
                             } else {
-                                holder.binding.inboxName.visibility = View.GONE
                                 holder.binding.inboxInDate.visibility = View.VISIBLE
                             }
                         } catch (e: ParseException) {
@@ -148,7 +146,7 @@ class GroupChatAdapter(var context : Context, var messageList : ArrayList<Chat>)
                         holder.binding.inboxInDate.visibility = View.VISIBLE
                     }
                 }
-            }
+            }*/
 
         }
     }

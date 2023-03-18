@@ -37,7 +37,9 @@ public class OnBoardingActivity extends AppCompatActivity {
         addDotsIndicator(0);
 
         binding.skip.setOnClickListener(v -> {
+            SharedPref.getInstance(getApplicationContext()).saveBoolean(Constants.HAS_BEEN_LAUNCHED, true);
             startActivity(new Intent(OnBoardingActivity.this, LoginActivity.class));
+            finish();
         });
 
         binding.finishBtn.setOnClickListener(v -> {

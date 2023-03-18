@@ -6,49 +6,57 @@
     android:background="@color/secondary"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/image"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_150sdp"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:srcCompat="@drawable/team_up_task"
-        android:hardwareAccelerated="false"
-        android:adjustViewBounds="true"/>
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="Your tasks in one place"
-        android:layout_marginStart="@dimen/_20sdp"
-        android:layout_marginEnd="@dimen/_20sdp"
-        android:textAlignment="gravity"
-        android:gravity="center"
-        android:textColor="@color/textColor"
-        android:fontFamily="@font/poppins_semi_bold"
-        android:textSize="@dimen/_16ssp"
-        app:layout_constraintTop_toBottomOf="@+id/image" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_150sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/team_up_task"
+            android:adjustViewBounds="true"/>
 
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Get assigned tasks, complete them and turn them in."
-        android:fontFamily="@font/poppins_regular"
-        android:textColor="@color/textColor"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="@dimen/_20sdp"
-        android:layout_marginEnd="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:textAlignment="gravity"
-        android:gravity="center_horizontal"
-        android:textSize="@dimen/_14ssp" />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Your tasks in one place"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:textAlignment="gravity"
+            android:gravity="center"
+            android:textColor="@color/textColor"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintTop_toBottomOf="@+id/image" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Get assigned tasks, complete them and turn them in."
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/textColor"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textAlignment="gravity"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/_14ssp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

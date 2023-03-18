@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/_5sdp"
+    android:layout_marginBottom="@dimen/_2sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,7 +44,6 @@
             app:layout_constraintStart_toEndOf="@+id/inbox_image"
             android:background="@drawable/chat_in"
             android:layout_marginStart="@dimen/_5sdp"
-            android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginEnd="@dimen/_30sdp"
             android:text="I am just typing random shii because I dont know what else to type"
             android:paddingStart="@dimen/_10sdp"
