@@ -51,8 +51,6 @@ public class AdminHomeFragment extends Fragment {
         binding.allTasksRecyclerView.setLayoutManager(layoutManager);
         binding.allTasksRecyclerView.setHasFixedSize(true);
 
-        fetchAllTasks();
-
         adapter = new AdminTaskListAdapter(requireActivity(), taskArrayList);
         binding.allTasksRecyclerView.setAdapter(adapter);
 
@@ -75,6 +73,7 @@ public class AdminHomeFragment extends Fragment {
             ((Activity) v.getContext()).finishAffinity();
         });
 
+        fetchAllTasks();
         return binding.getRoot();
     }
 
@@ -104,6 +103,12 @@ public class AdminHomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        fetchAllTasks();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
         fetchAllTasks();
     }
 }

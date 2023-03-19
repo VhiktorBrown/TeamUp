@@ -27,6 +27,69 @@ class AppUtils {
             Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
         }
 
+        fun getFirstNameOnly(fullName: String): String {
+            val split = fullName.split(" ").toTypedArray()
+            return split[0]
+        }
+
+        fun getTimeInDaysOrWeeksForNotification(date: String): String? {
+            var date1: Date? = null
+            var timeInMillis: Long = 0
+            val format = SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss")
+            try {
+                date1 = format.parse(date)
+                timeInMillis = date1.time
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+            return getTimeAgoForNotification(timeInMillis)
+        }
+
+        fun getTimeAgoForNotification(time: Long): String? {
+            var time = time
+            if (time < 1000000000000L) {
+                // if timestamp given in seconds, convert to millis
+                time *= 1000
+            }
+            val now = System.currentTimeMillis()
+            if (now > time || time <= 0) {
+                return "Time's up"
+            }
+
+            // TODO: localize
+            val diff = time - now
+            return when {
+                diff < MINUTE_MILLIS -> {
+                    "Time's up"
+                }
+                diff < 2 * MINUTE_MILLIS -> {
+                    "1 min from now"
+                }
+                diff < 50 * MINUTE_MILLIS -> {
+                    (diff / MINUTE_MILLIS).toString() + " minutes from now"
+                }
+                diff < 110 * MINUTE_MILLIS -> {
+                    "1 hour from now"
+                }
+                diff < 24 * HOUR_MILLIS -> {
+                    (diff / HOUR_MILLIS).toString() + " hours from now"
+                }
+                diff < 48 * HOUR_MILLIS -> {
+                    "1 day from now"
+                }
+                diff < 7 * DAY_MILLIS -> {
+                    (diff / DAY_MILLIS).toString() + " days from now"
+                }
+                diff < 2 * WEEK_MILLIS -> {
+                    "a week from now"
+                }
+                else -> {
+                    (diff / WEEK_MILLIS).toString() + " weeks from now"
+                }
+            }
+        }
+
+
         @SuppressLint("ResourceAsColor")
         fun showSnackBar(view: View?, message: String?) {
             if (view != null) {

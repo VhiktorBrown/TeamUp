@@ -16,6 +16,10 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.theelitedevelopers.teamup.core.data.local.SharedPref;
+import com.theelitedevelopers.teamup.core.data.remote.ServiceGenerator;
+import com.theelitedevelopers.teamup.core.data.request.Notification;
+import com.theelitedevelopers.teamup.core.data.request.NotificationBody;
+import com.theelitedevelopers.teamup.core.data.request.NotificationMessage;
 import com.theelitedevelopers.teamup.core.utils.AppUtils;
 import com.theelitedevelopers.teamup.core.utils.Constants;
 import com.theelitedevelopers.teamup.databinding.ActivityChatBinding;
@@ -31,6 +35,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+
+import io.reactivex.Single;
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+import retrofit2.Response;
 
 public class ChatActivity extends AppCompatActivity {
     ActivityChatBinding binding;
@@ -230,7 +241,7 @@ public class ChatActivity extends AppCompatActivity {
                                                         updateLastMessageAndDateForReceiver(currentChat, chat);
 
                                                         //send Push Notifications
-                                                        //fetchStudentToken(receiverUid);
+                                                        fetchStudentToken(receiverUid);
                                                     }
                                                 }
                                             }
@@ -253,13 +264,61 @@ public class ChatActivity extends AppCompatActivity {
                         UserDetails employee = task.getResult().getDocuments().get(0).toObject(UserDetails.class);
                         if(employee != null){
                             employee.setId(task.getResult().getDocuments().get(0).getId());
-                            //setUpNotificationData(employee);
+                            setUpNotificationData(employee);
                         }
                     } else {
                         Log.d(TAG, "Error getting documents: ", task.getException());
                     }
                 });
     }
+
+    private void setUpNotificationData(UserDetails employee){
+        Notification notification = new Notification();
+        notification.setTo(employee.getToken());
+        NotificationBody notificationBody = new NotificationBody();
+        NotificationMessage notificationMessage = new NotificationMessage();
+        notificationMessage.setTitle(SharedPref.getInstance(getApplicationContext()).getString(Constants.NAME)+" sent you a message");
+        notificationMessage.setBody(chat.getMessage());
+
+        notificationBody.setTitle(SharedPref.getInstance(getApplicationContext()).getString(Constants.NAME)+" sent you a message");
+        notificationBody.setBody(chat.getMessage());
+
+        notification.setData(notificationBody);
+        notification.setNotification(notificationMessage);
+
+        notification.setPriority("high");
+
+        sendNotification(notification, employee);
+    }
+
+    private void sendNotification(Notification notification, UserDetails employee){
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Authorization", "key=" + Constants.PUSH_NOT_KEY);
+
+        Single<Response<JSONObject>> sendNotification = ServiceGenerator.getInstance()
+                .getApi().sendNotification(headers, notification);
+        sendNotification.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Response<JSONObject>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onSuccess(@NonNull Response<JSONObject> sentNotificationResponse) {
+                        if(sentNotificationResponse.isSuccessful()){
+                            Toast.makeText(getApplicationContext(), "Push Notification sent", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        sendNotification(notification, employee);
+                    }
+                });
+    }
+
 
 //    private void setUpNotificationData(UserDetails employee){
 //        Notification notification = new Notification();

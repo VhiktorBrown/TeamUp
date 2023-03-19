@@ -139,6 +139,7 @@ public class RegisterActivity extends AppCompatActivity {
         employeeMap.put("dateJoined", employee.getDateJoined());
         employeeMap.put("dateOfBirth", employee.getDateOfBirth());
         employeeMap.put("uid", employee.getUid());
+        employeeMap.put("token", "");
 
         // Add a new document with a generated ID
         database.collection(Constants.EMPLOYEES)

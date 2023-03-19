@@ -34,6 +34,8 @@ public class StartNewGroupActivity extends AppCompatActivity {
         binding = ActivityStartNewGroupBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        binding.goBack.setOnClickListener(v -> onBackPressed());
+
         binding.createNewGroupButton.setOnClickListener(v -> {
             String title = binding.groupName.getText().toString();
             String description = binding.groupDescription.getText().toString();

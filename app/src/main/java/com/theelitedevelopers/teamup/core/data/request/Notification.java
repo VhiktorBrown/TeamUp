@@ -5,8 +5,17 @@ public class Notification {
     String priority;
     NotificationBody data;
     NotificationMessage notification;
+    String[] registration_ids;
 
     public Notification(){}
+
+    public String[] getRegistration_ids() {
+        return registration_ids;
+    }
+
+    public void setRegistration_ids(String[] registration_ids) {
+        this.registration_ids = registration_ids;
+    }
 
     public String getTo() {
         return to;

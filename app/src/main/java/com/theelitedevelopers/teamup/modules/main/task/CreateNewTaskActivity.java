@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,12 +24,19 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.theelitedevelopers.teamup.R;
 import com.theelitedevelopers.teamup.core.data.local.SharedPref;
+import com.theelitedevelopers.teamup.core.data.remote.ServiceGenerator;
+import com.theelitedevelopers.teamup.core.data.request.Notification;
+import com.theelitedevelopers.teamup.core.data.request.NotificationBody;
+import com.theelitedevelopers.teamup.core.data.request.NotificationMessage;
 import com.theelitedevelopers.teamup.core.utils.AppUtils;
 import com.theelitedevelopers.teamup.core.utils.Constants;
 import com.theelitedevelopers.teamup.databinding.ActivityCreateNewTaskBinding;
 import com.theelitedevelopers.teamup.databinding.DropDownBottomSheetLayoutBinding;
 import com.theelitedevelopers.teamup.modules.data.models.Task;
 import com.theelitedevelopers.teamup.modules.data.models.UserDetails;
+import com.theelitedevelopers.teamup.modules.main.home.MainActivity;
+
+import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -41,12 +49,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import io.reactivex.Single;
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+import retrofit2.Response;
+
 public class CreateNewTaskActivity extends AppCompatActivity {
     ActivityCreateNewTaskBinding binding;
     FirebaseFirestore database = FirebaseFirestore.getInstance();
     ArrayList<UserDetails> employees = new ArrayList<>();
     String selectedEmployee = "Select Employee";
     String selectedEmployeeUid = "";
+    String selectedEmployeeToken ="";
     int progressStatus =0;
     Calendar assDueDate = Calendar.getInstance();
     String date="", dateToday="";
@@ -60,6 +76,8 @@ public class CreateNewTaskActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         getAllEmployees();
+
+        binding.goBack.setOnClickListener(v -> onBackPressed());
 
         binding.taskAssignedTo.setOnClickListener(v -> {
             showBottomSheetDialog(binding.taskAssignedTo.getId());
@@ -156,6 +174,7 @@ public class CreateNewTaskActivity extends AppCompatActivity {
                 bottomSheetDialogRvAdapter.setOnItemCLickListener(item -> {
                     selectedEmployee = item.getName();
                     selectedEmployeeUid = item.getUid();
+                    selectedEmployeeToken = item.getToken();
                     binding.taskAssignedTo.setText(selectedEmployee);
                     bottomSheetDialog.dismiss();
                     });
@@ -165,6 +184,32 @@ public class CreateNewTaskActivity extends AppCompatActivity {
             }
 
         }
+
+    private void setUpNotificationData(Task task){
+        Notification notification = new Notification();
+        notification.setTo(selectedEmployeeToken);
+        NotificationBody notificationBody = new NotificationBody();
+        NotificationMessage notificationMessage = new NotificationMessage();
+        notificationMessage.setTitle(AppUtils.Companion.getFirstNameOnly(SharedPref.getInstance(getApplicationContext()).getString(Constants.NAME))+
+                " just assigned you a task");
+        notificationMessage.setBody(task.getTitle()+" is to be turned in "+
+                AppUtils.Companion.getTimeInDaysOrWeeksForNotification(
+                        AppUtils.Companion.fromTimeStampToString(
+                                task.getDeadLine().getSeconds()))+ ". Hurry up, carry it out and submit before the deadline.");
+
+        notificationBody.setTitle(AppUtils.Companion.getFirstNameOnly(SharedPref.getInstance(getApplicationContext()).getString(Constants.NAME))+
+                " just assigned you a task");
+        notificationBody.setBody(task.getTitle()+" is to be turned in "+
+                AppUtils.Companion.getTimeInDaysOrWeeksForNotification(
+                        AppUtils.Companion.fromTimeStampToString(task.getDeadLine().getSeconds()))+ ". Hurry up, do it and submit before the deadline.");
+        notification.setData(notificationBody);
+        notification.setNotification(notificationMessage);
+
+        notification.setPriority("high");
+
+        sendNotification(notification, task);
+    }
+
 
     private void saveTaskToDB(Task task){
 
@@ -183,16 +228,42 @@ public class CreateNewTaskActivity extends AppCompatActivity {
         database.collection(Constants.TASKS)
                 .add(taskMap)
                 .addOnSuccessListener(documentReference -> {
-                    binding.progressBar.setVisibility(View.GONE);
-                    Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                    AppUtils.Companion
-                            .showToastMessage(CreateNewTaskActivity.this, "Task added to DB successfully");
-                    finish();
-                    //setUpNotificationData(assignment);
+                    setUpNotificationData(task);
                 })
                 .addOnFailureListener(e -> {
                     binding.progressBar.setVisibility(View.GONE);
                     Log.w(TAG, "Error adding document", e);
+                });
+    }
+
+    private void sendNotification(Notification notification, Task task){
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Authorization", "key=" + Constants.PUSH_NOT_KEY);
+
+        Single<Response<JSONObject>> sendNotification = ServiceGenerator.getInstance()
+                .getApi().sendNotification(headers, notification);
+        sendNotification.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Response<JSONObject>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onSuccess(@NonNull Response<JSONObject> sentNotificationResponse) {
+                        if(sentNotificationResponse.isSuccessful()){
+                            binding.progressBar.setVisibility(View.GONE);
+                            AppUtils.Companion
+                                    .showToastMessage(CreateNewTaskActivity.this, "Task added to DB successfully");
+                            finish();
+                        }
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        sendNotification(notification, task);
+                    }
                 });
     }
 

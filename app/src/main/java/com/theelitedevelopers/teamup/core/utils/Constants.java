@@ -12,6 +12,7 @@ public class Constants {
     public static final String GROUP_CHAT_NAME = "group_chat_name";
     public static final String GROUP_CHATS = "groupChats";
     public static final String SUBSCRIBED = "subscribed";
+    public static final String PUSH_NOT_KEY = "AAAAMAX-53Q:APA91bFaiM_q8V0NXJDn2kupJwhWLfRF9tPllB5ioiX1q5hGAYEA9sMgx4Ac6aBzM9xvhmL5vmLjx49XrcQZK8t43InyVSYQ9dsUZHWo9qggnwV7xsO58xRlhPOSHu0trVgGM3b9IVbd";
     public static String NAME = "name";
     public static String EMAIL = "email";
     public static String DATE_OF_BIRTH = "date_of_birth";

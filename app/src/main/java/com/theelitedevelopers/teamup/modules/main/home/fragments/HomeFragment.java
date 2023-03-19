@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -43,14 +44,13 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater, container, false);
+
         binding.userName.setText(SharedPref.getInstance(requireActivity()).getString(Constants.NAME));
         binding.userRole.setText(SharedPref.getInstance(requireActivity()).getString(Constants.ROLE));
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false);
         binding.allTasksRecyclerView.setLayoutManager(layoutManager);
         binding.allTasksRecyclerView.setHasFixedSize(true);
-
-        fetchMyTasks();
 
         adapter = new TaskListAdapter(requireActivity(), taskArrayList);
         binding.allTasksRecyclerView.setAdapter(adapter);
@@ -62,6 +62,7 @@ public class HomeFragment extends Fragment {
             ((Activity) v.getContext()).finishAffinity();
         });
 
+        fetchMyTasks();
         return binding.getRoot();
     }
 
@@ -93,6 +94,12 @@ public class HomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        fetchMyTasks();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
         fetchMyTasks();
     }
 }

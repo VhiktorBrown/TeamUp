@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/secondary"
     tools:context=".modules.authentication.LoginActivity">
 
     <ImageView
@@ -55,6 +56,7 @@
         android:layout_marginEnd="@dimen/_20sdp"
         android:layout_marginStart="@dimen/_20sdp"
         app:hintEnabled="true"
+        app:startIconTint="@drawable/icon_tint_state"
         app:startIconDrawable="@drawable/ic_email"
         app:endIconTint="@color/textColor"
         app:layout_constraintTop_toBottomOf="@+id/login_text"
@@ -84,6 +86,7 @@
         android:layout_marginEnd="@dimen/_20sdp"
         android:layout_marginStart="@dimen/_20sdp"
         app:hintEnabled="true"
+        app:startIconTint="@drawable/icon_tint_state"
         app:startIconDrawable="@drawable/ic_password"
         app:endIconTint="@color/textColor"
         app:passwordToggleEnabled="true"

@@ -13,14 +13,20 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 import com.theelitedevelopers.teamup.R;
 import com.theelitedevelopers.teamup.core.data.local.SharedPref;
+import com.theelitedevelopers.teamup.core.data.remote.ServiceGenerator;
+import com.theelitedevelopers.teamup.core.data.request.Notification;
+import com.theelitedevelopers.teamup.core.data.request.NotificationBody;
+import com.theelitedevelopers.teamup.core.data.request.NotificationMessage;
 import com.theelitedevelopers.teamup.core.utils.AppUtils;
 import com.theelitedevelopers.teamup.core.utils.Constants;
 import com.theelitedevelopers.teamup.databinding.ActivityCreateNewTaskBinding;
@@ -28,6 +34,8 @@ import com.theelitedevelopers.teamup.databinding.ActivityEditTaskBinding;
 import com.theelitedevelopers.teamup.databinding.DropDownBottomSheetLayoutBinding;
 import com.theelitedevelopers.teamup.modules.data.models.Task;
 import com.theelitedevelopers.teamup.modules.data.models.UserDetails;
+
+import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -38,18 +46,27 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import io.reactivex.Single;
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+import retrofit2.Response;
+
 public class EditTaskActivity extends AppCompatActivity {
     ActivityEditTaskBinding binding;
     FirebaseFirestore database = FirebaseFirestore.getInstance();
     ArrayList<UserDetails> employees = new ArrayList<>();
     String selectedEmployee = "Select Employee";
     String selectedEmployeeUid = "";
+    String selectedEmployeeToken ="";
     int progressStatus =0;
     Task task;
     Calendar assDueDate = Calendar.getInstance();
     String date="";
     Timestamp dateDue;
     SimpleDateFormat simpleDateFormat, simpleTimeFormat;
+    String[] tokens;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +79,9 @@ public class EditTaskActivity extends AppCompatActivity {
             setTaskDetails(task);
         }
         getAllEmployees();
+        getAllAdmins();
+
+        binding.goBack.setOnClickListener(v -> onBackPressed());
 
         binding.taskAssignedTo.setOnClickListener(v -> {
             if(SharedPref.getInstance(getApplicationContext()).getBoolean(Constants.ADMIN)){
@@ -198,6 +218,7 @@ public class EditTaskActivity extends AppCompatActivity {
                 bottomSheetDialogRvAdapter.setOnItemCLickListener(item -> {
                     selectedEmployee = item.getName();
                     selectedEmployeeUid = item.getUid();
+                    selectedEmployeeToken = item.getToken();
                     binding.taskAssignedTo.setText(selectedEmployee);
                     bottomSheetDialog.dismiss();
                 });
@@ -207,6 +228,38 @@ public class EditTaskActivity extends AppCompatActivity {
         }
 
     }
+
+    private void setUpNotificationData(Task task){
+        Notification notification = new Notification();
+        //If not an admin, send push Notifications to alert all Admins
+        if(!SharedPref.getInstance(getApplicationContext()).getBoolean(Constants.ADMIN)){
+            notification.setRegistration_ids(tokens);
+        }else {
+            //If an Admin, then send to Employee task was assigned to.
+            notification.setTo(selectedEmployeeToken);
+        }
+        NotificationBody notificationBody = new NotificationBody();
+        NotificationMessage notificationMessage = new NotificationMessage();
+        notificationMessage.setTitle(AppUtils.Companion.getFirstNameOnly(SharedPref.getInstance(getApplicationContext()).getString(Constants.NAME))+
+                " made changes to this task");
+        notificationMessage.setBody(task.getTitle()+" is to be turned in "+
+                AppUtils.Companion.getTimeInDaysOrWeeksForNotification(
+                        AppUtils.Companion.fromTimeStampToString(
+                                task.getDeadLine().getSeconds()))+ ". Check out the changes made to this task.");
+
+        notificationBody.setTitle(AppUtils.Companion.getFirstNameOnly(SharedPref.getInstance(getApplicationContext()).getString(Constants.NAME))+
+                " made changes to this task");
+        notificationBody.setBody(task.getTitle()+" is to be turned in "+
+                AppUtils.Companion.getTimeInDaysOrWeeksForNotification(
+                        AppUtils.Companion.fromTimeStampToString(task.getDeadLine().getSeconds()))+ ". Check out the changes made to this task.");
+        notification.setData(notificationBody);
+        notification.setNotification(notificationMessage);
+
+        notification.setPriority("high");
+
+        sendNotification(notification, task);
+    }
+
 
     private void updateTaskOnDB(Task task){
 
@@ -223,17 +276,45 @@ public class EditTaskActivity extends AppCompatActivity {
                 .document(task.getId())
                 .set(taskMap, SetOptions.merge())
                 .addOnSuccessListener(documentReference -> {
-                    binding.progressBar.setVisibility(View.GONE);
-                    AppUtils.Companion
-                            .showToastMessage(EditTaskActivity.this, "Task updated on DB successfully");
-                    finish();
-                    //setUpNotificationData(assignment);
+                    setUpNotificationData(task);
                 })
                 .addOnFailureListener(e -> {
                     binding.progressBar.setVisibility(View.GONE);
                     Log.w(TAG, "Error adding document", e);
                 });
     }
+
+    private void sendNotification(Notification notification, Task task){
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Authorization", "key=" + Constants.PUSH_NOT_KEY);
+
+        Single<Response<JSONObject>> sendNotification = ServiceGenerator.getInstance()
+                .getApi().sendNotification(headers, notification);
+        sendNotification.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Response<JSONObject>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onSuccess(@NonNull Response<JSONObject> sentNotificationResponse) {
+                        if(sentNotificationResponse.isSuccessful()){
+                            binding.progressBar.setVisibility(View.GONE);
+                            AppUtils.Companion
+                                    .showToastMessage(EditTaskActivity.this, "Task updated on DB successfully");
+                            finish();
+                        }
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        sendNotification(notification, task);
+                    }
+                });
+    }
+
 
     public void showDateTimePicker(){
         final Calendar currentDate = Calendar.getInstance();
@@ -331,6 +412,33 @@ public class EditTaskActivity extends AppCompatActivity {
                 }).addOnFailureListener(e -> getAllEmployees());
 
         return employees;
+    }
+
+    private void getAllAdmins(){
+        database.collection(Constants.EMPLOYEES)
+                .whereEqualTo("admin", true)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        if(!task.getResult().isEmpty()){
+                            tokens = new String[task.getResult().size()];
+                            int i = 0;
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                if(!document.toObject(UserDetails.class).getUid().equals(SharedPref.getInstance(getApplicationContext()).getString(Constants.UID))){
+                                    UserDetails userDetails = document.toObject(UserDetails.class);
+                                    tokens[i] = userDetails.getToken();
+                                    i++;
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                }
+                            }
+                        }
+                    } else {
+                        Log.d(TAG, "Error getting documents: ", task.getException());
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    getAllAdmins();
+                });
     }
 
     private ArrayList<UserDetails> getListOfEmployees() {

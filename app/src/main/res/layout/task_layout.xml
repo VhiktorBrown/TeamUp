@@ -95,6 +95,7 @@
                 android:textAlignment="gravity"
                 android:gravity="center_vertical"
                 android:drawablePadding="@dimen/_2sdp"
+                android:drawableTint="@color/textColor"
                 android:textSize="@dimen/_10ssp"
                 app:drawableStartCompat="@drawable/ic_time" />
 
@@ -116,9 +117,6 @@
                 android:paddingBottom="@dimen/_2sdp"
                 android:textColor="@color/white"
                 android:fontFamily="@font/poppins_regular" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.cardview.widget.CardView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

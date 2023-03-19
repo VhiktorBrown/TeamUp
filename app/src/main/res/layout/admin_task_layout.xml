@@ -80,6 +80,7 @@
                 android:layout_height="wrap_content"
                 android:text="Assigned to Jessica Pearson"
                 android:drawablePadding="@dimen/_5sdp"
+                android:drawableTint="@color/textColor"
                 android:textSize="@dimen/_11ssp"
                 app:layout_constraintStart_toEndOf="@+id/image_cardView"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -109,6 +110,7 @@
                 android:textAlignment="gravity"
                 android:gravity="center_vertical"
                 android:drawableStart="@drawable/ic_time"
+                android:drawableTint="@color/textColor"
                 android:drawablePadding="@dimen/_5sdp"
                 android:textSize="@dimen/_10ssp" />
 
